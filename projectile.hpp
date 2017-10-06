@@ -16,7 +16,7 @@ struct TState {
 
 template <typename T>
 auto operator+(VecR3<T> a, VecR3<T> b) {
-  return VecR3<T>{a.x + b.x, a.y + b.y, a.z + b.z + c.z};
+  return VecR3<T>{a.x + b.x, a.y + b.y, a.z + b.z};
 }
 
 template <typename T>
