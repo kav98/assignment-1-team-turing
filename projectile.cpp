@@ -10,8 +10,8 @@ const double k = 0.5; // constant
 const double w = 2; // period 
 
 auto force(TState s) {
-  return VecR3<double>{e0 * std::cos(k * s.position.z - w * s.t) / sqrt(2),
-    e0 * std::sin(k * s.position.z - w * s.t) / sqrt(2),
+  return VecR3<double>{e0 * cos(k * s.position.z - w * s.t) / sqrt(2),
+    e0 * sin(k * s.position.z - w * s.t) / sqrt(2),
     0} * q;
  }
 
