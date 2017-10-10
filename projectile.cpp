@@ -1,5 +1,5 @@
 #include "projectile.hpp"
-#include <math.h>
+#include <cmath>
 
 const double m = 1; // mass of bob
 const double g = 9.8066; // gravity
