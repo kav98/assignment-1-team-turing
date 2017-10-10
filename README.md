@@ -39,7 +39,7 @@ The output will be six columns of numbers with the following order:
 time [s], x-position [m], y-position [m], z-position[m], x-speed [m/s], y-speed [m/s], z-speed[m/s]
 ```
 Example output:   
-![](example-output.png)
+![](sample-output.png)
 
 ### Questions:
 
