@@ -44,7 +44,7 @@ Example output:
 ### Questions:
 
 ## 2:
-The Euler integration calculates the velocity of the particle at time t + dt by using the acceleration at time t.  This does not account for the fact that the acceleration is also changing based on the position of the particle!  The Verlet integration method derives a more accurate velocity by averaging the acceleration before and after the position change, and also derives the position at time t + dt using the acceleration at time t.
+The Euler integration calculates the velocity of the particle at time t + dt by using the acceleration at time t.  This does not account for the fact that the acceleration is also changing based on the position of the particle!  The Verlet integration method derives a more accurate velocity by averaging the acceleration before and after the position change, and also derives the position at time t + dt using the acceleration at time t.  It does so by implementing some dynamic equations
 
 Overall, the Verlet integration takes into account the changing acceleration for the velocity, as well as the particle’s acceleration for the position, two things that Euler’s method did not do.
 
@@ -60,7 +60,7 @@ Difference made:
 Without much math, it can be seen that the smaller the step size, the lower the difference in the results.  For this particular application, the Euler algorithm yields close results to the Verlet algorithm, both because the step size is sufficiently small and because the motion is circular in the impacted directions (x-y plane).  For more complicated (non-circular) paths with the acceleration impacted only by the position, the Euler algorithm would be less accurate.
 
 ## 3: 
-A vector constitutes a vector is closed under addition and scalar multiplication. In our case VecR2 is an integer type which does constitutes a vector space because it is closed under addition and scalar multiplication. 
+A vector constitutes a vector is closed under addition and scalar multiplication. In our case VecR2 is an integer type which does not constitute a vector space because it is closed under addition but not under scalar multiplication. 
 For the two vectors be closed under addition, its sum must be inside of the Vector space.
 Let u, v and z be integer type vectors in a 2D Vector Space (VecR2)
 Let x, y be the components of vector u and are integer type.
@@ -74,9 +74,20 @@ Since u and v are vectors in VecR2 type the sum of u and v (vector z) must also 
 
 Let u be a vector inside a 2D Vector Space (VecR2).
 Let x, y be the components of vector u and are integer type.
-Let c be an integer type scalar. 
-c*u = c * (x, y) ∈ VecR2
-c*u = (c * x, c * y) ∈ VecR2
-The result of two integers being multiplied(c and u) always results in an integer type. Since the result of scalar multiplication is an integer it can be concluded that u is closed under scalar multiplication.
+Let c be a scalar of any type. 
+c*u = c * (x, y) ∉ VecR2
+c*u = (c * x, c * y) ∉ VecR2
+The result of an integer and a double results in an integer but the result will truncate (lower value). Since the result of scalar multiplication is an integer with a lower value it can be concluded that u is not closed under scalar multiplication. 
+Since the second axiom failes the VecR2<int> is not a vector!
+
+TLDR: Because it is not closed under scalar multiplication, (it results in a group of numbers with decimals, not in the original space), VecR2<int> is not a vector!  (as it fails this very important axiom!)
 
 ## 4:
+
+This equation represents a type constructor that is a function of type T.  Given T, this constructor recursively returns either an empty value (unit type), or the function of T x (L<T>).  When expanded, this results in a 'tagged' union of multiple powers of type T results. 
+This can be written simply as: 
+  ```bash
+  () + T + T^2 + T^3 ... T^N.
+  ```
+  
+ Therefore, a Type that is a list of type T, of any length. is represented by the equation!  
