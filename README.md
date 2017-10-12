@@ -1,6 +1,6 @@
 # `livecode-chargedParticle`
 ---
-![](https://travis-ci.org/timtro/livecode-projectile.svg?branch=master)
+![](https://travis-ci.org/SOFE-2850U/assignment-1-team-turing.svg?branch=master)
 
 A simple implementation of an Euler integrator for projectile motion. This program was written (mostly) live, in lecture for SOFE-2850U in Fall 2017.
 
@@ -44,20 +44,20 @@ Example output:
 ### Questions:
 
 ## 2:
-The Euler integration calculates the velocity of the particle at time t + dt by using the acceleration at time t.  This does not account for the fact that the acceleration is also changing based on the position of the particle!  The Verlet integration method derives a more accurate velocity by averaging the acceleration before and after the position change, and also derives the position at time t + dt using the acceleration at time t.  It does so by implementing some dynamic equations
+The Euler integration calculates the velocity of the particle at time t + dt by using the acceleration at time t.  This does not account for the fact that the acceleration is also changing based on the position of the particle!  The Verlet integration method derives a more accurate velocity by averaging the acceleration before and after the position change, and also derives the position at time t + dt using the acceleration at time t.  It does so by implementing some dynamic equations. 
 
 Overall, the Verlet integration takes into account the changing acceleration for the velocity, as well as the particle’s acceleration for the position, two things that Euler’s method did not do.
 
 How does this affect the plotted positions?
 
-As the particle follows a circular path (in the x and y directions), the acceleration is constantly changing (is centripetal).  Because the euler algorithm is less accurate at modelling the velocity and position based on changes in acceleration, we can expect that it will have a larger radius of travel.  This is verified by plotting the x and y coordinates in against each other for each method and comparing them:
+As the particle follows a near-circular path (in the x and y directions), the acceleration is constantly changing.  Because the euler algorithm is less accurate at modelling the velocity and position based on changes in acceleration, we can expect that it will have a larger overall radii.  This is verified by plotting the x and y coordinates in against each other for each method and comparing them:
 ![](euler-vs-verlet.png)
 
 Furthermore, as the electric field does not affect motion in the z direction, both methods have the same z position at any given time.
 
-Difference made:
+What it means:
 
-Without much math, it can be seen that the smaller the step size, the lower the difference in the results.  For this particular application, the Euler algorithm yields close results to the Verlet algorithm, both because the step size is sufficiently small and because the motion is circular in the impacted directions (x-y plane).  For more complicated (non-circular) paths with the acceleration impacted only by the position, the Euler algorithm would be less accurate.
+Without much math, it can be seen that the smaller the step size, the lower the difference in the results.  For this particular application, the Euler algorithm yields close results to the Verlet algorithm, both because the step size is sufficiently small and because the motion is near-periodic in either the x or y direction.  For more complicated (non-circular) paths with the greater (higher degree) acceleration acceleration changes, the Euler algorithm would be less accurate.
 
 ## 3: 
 A vector constitutes a vector is closed under addition and scalar multiplication. In our case VecR2 is an integer type which does not constitute a vector space because it is closed under addition but not under scalar multiplication. 
